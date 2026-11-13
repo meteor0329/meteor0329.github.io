@@ -339,6 +339,21 @@ h6 {
   text-align: center;
 }
 
+/* 加在 portfolio-detail.css 或 main.css 最下方 */
+.footer .credits {
+  font-size: 11px;
+  color: #cccccc; /* 極淡的淺灰色，不搶眼但依然清晰可辨 */
+}
+
+.footer .credits a {
+  color: #bbbbbb;
+}
+
+.footer .credits a:hover {
+  color: #888888; /* 滑鼠移過去時稍微加深，保留互動感 */
+}
+
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
