@@ -237,7 +237,8 @@ h2 {
 }
 
 .media-frame--hero img {
-  aspect-ratio: 16 / 8.5;
+  aspect-ratio: 16 / 8.5; /* 維持原本的寬扁比例 */
+  object-fit: contain;    /* 縮小圖片以完整塞進框內，不裁切 */
 }
 
 .media-frame:hover img,
