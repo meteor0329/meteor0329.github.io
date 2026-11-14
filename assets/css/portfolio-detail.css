@@ -238,17 +238,23 @@ h2 {
   background: var(--surface-color);
 }
 
+/* 找到原本這段並修改 */
 .media-frame img,
 .media-card img {
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: left bottom; /* 新增這行：讓圖片靠左對齊文案、靠下貼近說明文字 */
   transition: transform 500ms ease;
 }
+
+
 
 .media-frame--hero img {
   aspect-ratio: 16 / 8.5; /* 維持原本的寬扁比例 */
   object-fit: contain;    /* 縮小圖片以完整塞進框內，不裁切 */
+  object-position: center; /* 新增這行：讓 Hero 主圖單獨保持水平與垂直置中 */
 }
+
 
 .media-frame:hover img,
 .media-card:hover img {
