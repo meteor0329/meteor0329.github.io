@@ -5,7 +5,7 @@ const projects = [
   { id: "7-graphic", title: "聖誕烤雞Bye通通拿去做雞巾", url: "portfolio-7-graphic.html", categories: ["all", "graphic"] },
   { id: "2-branding", title: "黑鐵板料理", url: "portfolio-2-branding.html", categories: ["all", "branding"] },
   { id: "3-branding", title: "毛巾印花DIY", url: "portfolio-3-branding.html", categories: ["all", "branding"] },
-  { id: "2-product", title: "允強雪納瑞毛巾小偶", url: "portfolio-2-product.html", categories: ["all", "product"] },
+  { id: "2-product", title: "瑞氏巾典-雪納瑞毛巾小偶(狗年)", url: "portfolio-2-product.html", categories: ["all", "product"] },
   { id: "3-graphic", title: "2018拒當單身狗", url: "portfolio-3-graphic.html", categories: ["all", "graphic"] },
   { id: "4-branding", title: "童言彤語夢想城堡", url: "portfolio-4-branding.html", categories: ["all", "branding"] },
   { id: "1-uiux", title: "奧萬大國家森林遊樂區", url: "portfolio-1-uiux.html", categories: ["all", "uiux"] },
