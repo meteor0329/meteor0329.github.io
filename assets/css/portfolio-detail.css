@@ -370,25 +370,29 @@ h2 {
   font-size: 13px;
 }
 
+/* 底部作品切換導覽：統一套用強資螺絲工廠詳情頁樣式 */
 .project-navigation {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 126px;
-  padding-top: 28px;
+  padding-top: 3rem;
   padding-bottom: 78px;
-  border-top: 1px solid var(--detail-line);
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
 }
 
 .project-nav-item {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.25rem;
+  color: var(--heading-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.project-nav-item--center {
-  align-items: center;
-  text-align: center;
+.project-nav-item:hover {
+  color: var(--accent-color);
+  transform: translateY(-3px);
 }
 
 .project-nav-item--right {
@@ -397,21 +401,68 @@ h2 {
 }
 
 .project-nav-label {
-  color: #999;
-  font-size: 11px;
-  letter-spacing: 0.11em;
+  font-size: 0.8rem;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
 .project-nav-item strong {
-  color: var(--heading-color);
-  font-size: 15px;
-  font-weight: 400;
+  color: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none !important;
 }
 
-.project-nav-item:hover strong {
-  text-decoration: underline;
-  text-underline-offset: 5px;
+/* 中間 All Projects 膠囊按鈕（自動隱藏 Back to 並加上四宮格圖示） */
+/* 中間 All Projects 膠囊按鈕（完全比照強資螺絲工廠詳情頁參數） */
+.project-nav-item--center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  border-radius: 25px;
+  color: var(--heading-color);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.project-nav-item--center i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.project-nav-item--center strong {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.project-nav-item--center:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+  transform: translateY(-3px);
+}
+
+/* 手機與平板響應式排版 */
+@media (max-width: 768px) {
+  .project-navigation {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  .project-nav-item--right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .project-nav-item--center {
+    order: -1;
+  }
 }
 
 .site-footer {
@@ -630,23 +681,6 @@ h2 {
     margin-bottom: 0;
   }
 
-  .project-navigation {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 16px;
-    margin-top: 78px;
-    padding-bottom: 58px;
-  }
-
-  .project-nav-item--center {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    order: -1;
-  }
-
-  .project-nav-item--right {
-    align-items: flex-end;
-  }
-
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
@@ -675,97 +709,4 @@ h2 {
   visibility: visible;
   opacity: 1;
 }
-
-/* 強制讓內頁的 btn-ghost 與首頁完全一致（白底、細框線、hover 保持白底黑框） */
-.portfolio-details .btn-ghost,
-a.btn-ghost {
-  display: inline-block;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%) !important;
-  color: var(--default-color) !important;
-  background-color: var(--surface-color) !important; /* 白底 (#ffffff) */
-  padding: 10px 18px !important;
-  border-radius: 8px !important;
-  text-decoration: none !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-.portfolio-details .btn-ghost:hover,
-.portfolio-details .btn-ghost:focus,
-a.btn-ghost:hover,
-a.btn-ghost:focus {
-  background-color: var(--surface-color) !important; /* 強制 hover 維持白底 */
-  border-color: var(--accent-color) !important;      /* 邊框變黑色 (#000000) */
-  color: var(--accent-color) !important;             /* 文字變黑色 (#000000) */
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color), transparent 90%) !important;
-  outline: none !important;
-}
-
-.portfolio-details .btn-ghost:active,
-a.btn-ghost:active {
-  transform: translateY(1px);
-}
-
-/* Hero 輪播圖：寬度最大 1156px，高度裁切減少 200px（約 663px 高） */
-.portfolio-details .portfolio-details-slider {
-  max-width: 1156px;
-  width: 100%;
-  margin: 0 auto 30px auto;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-wrapper,
-.portfolio-details .portfolio-details-slider .swiper-slide {
-  height: auto !important;
-}
-
-.portfolio-details .portfolio-details-slider img {
-  width: 100% !important;
-  height: 663px !important;      /* 原比例 863px 扣掉 200px 裁切 */
-  object-fit: cover !important;  /* 填滿容器並從正中央上下對稱裁切 */
-  object-position: center center !important;
-  display: block;
-}
-
-/* 手機與平板版自動縮放高度，避免螢幕太窄時圖片被拉長變形 */
-@media (max-width: 991px) {
-  .portfolio-details .portfolio-details-slider img {
-    height: auto !important;
-    aspect-ratio: 1156 / 663; /* 維持與桌機版相同的寬螢幕裁切比例 */
-  }
-}
-
-/* Design Process 改成四張照片等寬並排一列 */
-.process-gallery .gallery-masonry {
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important; /* 電腦版 4 張並排一列 */
-  gap: 20px !important; /* 卡片之間的間距 */
-}
-
-.process-gallery .gallery-item {
-  grid-column: span 1 !important;
-  grid-row: span 1 !important;
-  display: flex;
-  flex-direction: column;
-}
-
-.process-gallery .gallery-item img {
-  width: 100%;
-  aspect-ratio: 4 / 3; /* 統一四張圖片比例為 4:3，高度完全對齊 */
-  object-fit: cover;   /* 填滿框線且不變形 */
-  border-radius: 8px;
-}
-
-/* 平板尺寸（991px 以下）自動改為 2x2 兩欄排列 */
-@media (max-width: 991px) {
-  .process-gallery .gallery-masonry {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-/* 手機尺寸（575px 以下）自動改為單欄直排 */
-@media (max-width: 575px) {
-  .process-gallery .gallery-masonry {
-    grid-template-columns: 1fr !important;
-  }
-}
-
 
