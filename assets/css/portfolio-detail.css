@@ -676,3 +676,32 @@ h2 {
   opacity: 1;
 }
 
+/* 強制讓內頁的 btn-ghost 與首頁完全一致（白底、細框線、hover 保持白底黑框） */
+.portfolio-details .btn-ghost,
+a.btn-ghost {
+  display: inline-block;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%) !important;
+  color: var(--default-color) !important;
+  background-color: var(--surface-color) !important; /* 白底 (#ffffff) */
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.portfolio-details .btn-ghost:hover,
+.portfolio-details .btn-ghost:focus,
+a.btn-ghost:hover,
+a.btn-ghost:focus {
+  background-color: var(--surface-color) !important; /* 強制 hover 維持白底 */
+  border-color: var(--accent-color) !important;      /* 邊框變黑色 (#000000) */
+  color: var(--accent-color) !important;             /* 文字變黑色 (#000000) */
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color), transparent 90%) !important;
+  outline: none !important;
+}
+
+.portfolio-details .btn-ghost:active,
+a.btn-ghost:active {
+  transform: translateY(1px);
+}
+
