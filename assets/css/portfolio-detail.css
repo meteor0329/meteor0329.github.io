@@ -705,3 +705,67 @@ a.btn-ghost:active {
   transform: translateY(1px);
 }
 
+/* Hero 輪播圖：寬度最大 1156px，高度裁切減少 200px（約 663px 高） */
+.portfolio-details .portfolio-details-slider {
+  max-width: 1156px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-wrapper,
+.portfolio-details .portfolio-details-slider .swiper-slide {
+  height: auto !important;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100% !important;
+  height: 663px !important;      /* 原比例 863px 扣掉 200px 裁切 */
+  object-fit: cover !important;  /* 填滿容器並從正中央上下對稱裁切 */
+  object-position: center center !important;
+  display: block;
+}
+
+/* 手機與平板版自動縮放高度，避免螢幕太窄時圖片被拉長變形 */
+@media (max-width: 991px) {
+  .portfolio-details .portfolio-details-slider img {
+    height: auto !important;
+    aspect-ratio: 1156 / 663; /* 維持與桌機版相同的寬螢幕裁切比例 */
+  }
+}
+
+/* Design Process 改成四張照片等寬並排一列 */
+.process-gallery .gallery-masonry {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important; /* 電腦版 4 張並排一列 */
+  gap: 20px !important; /* 卡片之間的間距 */
+}
+
+.process-gallery .gallery-item {
+  grid-column: span 1 !important;
+  grid-row: span 1 !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.process-gallery .gallery-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* 統一四張圖片比例為 4:3，高度完全對齊 */
+  object-fit: cover;   /* 填滿框線且不變形 */
+  border-radius: 8px;
+}
+
+/* 平板尺寸（991px 以下）自動改為 2x2 兩欄排列 */
+@media (max-width: 991px) {
+  .process-gallery .gallery-masonry {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 手機尺寸（575px 以下）自動改為單欄直排 */
+@media (max-width: 575px) {
+  .process-gallery .gallery-masonry {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
