@@ -711,12 +711,13 @@
                 <p>期待與您交流不同的設計想法，歡迎透過以下方式直接與我取得聯繫。</p>
               </div>
 
-              <!-- 串接 FormSubmit 直接寄信至 meteor32975@gmail.com -->
-              <form action="https://formsubmit.co" method="POST" class="contact-form">
-                <!-- 寄信設定參數 -->
-                <input type="hidden" name="_subject" value="【作品集網站新訊息】來自訪客的聯絡表單">
-                <!-- <input type="hidden" name="_captcha" value="false"> -->
-                <input type="hidden" name="_template" value="table">
+              <!-- 串接 Web3Forms 穩定寄信至 meteor32975@gmail.com -->
+              <form action="https://web3forms.com" method="POST" class="contact-form">
+                <!-- 專屬 Access Key -->
+                <input type="hidden" name="access_key" value="4b83b657-07ce-4240-9fa1-cc61a70f86fc">
+                <!-- 自訂信件主旨與寄件者名稱 -->
+                <input type="hidden" name="subject" value="【作品集網站新訊息】來自訪客的聯絡表單">
+                <input type="hidden" name="from_name" value="Mary's Kitchen 作品集網站">
 
                 <div class="row gy-4">
                   <div class="col-md-6">
@@ -742,8 +743,8 @@
 
                   <div class="col-md-6">
                     <div class="form-field">
-                      <label for="subject" class="field-label">SUBJECT</label>
-                      <input type="text" id="subject" name="subject" class="form-input" placeholder="Subject" required>
+                      <label for="subject_input" class="field-label">SUBJECT</label>
+                      <input type="text" id="subject_input" name="custom_subject" class="form-input" placeholder="Subject" required>
                     </div>
                   </div>
 
