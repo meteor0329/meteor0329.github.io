@@ -828,6 +828,9 @@
   const formResult = document.getElementById('form-result');
   const submitBtn = document.getElementById('submit-btn');
 
+  // ★ 就是貼在這裡！把單引號裡面的中文字換成你的 /exec 網址
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwl_vwVplCcNWSeE2jHjBhm3yOlb5uVoawo_8y8Zi_bc2G5cg3kNj41AHm65I_LRCBJ/exec';
+
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -835,27 +838,21 @@
       formResult.style.color = '#555555';
       formResult.textContent = '訊息傳送中，請稍候...';
 
-      // 直接使用 FormData 傳送，避免跨網域 JSON 預檢被瀏覽器或外掛攔截
       const formData = new FormData(contactForm);
 
-      fetch('https://web3forms.com', {
+      fetch(scriptURL, {
         method: 'POST',
+        mode: 'no-cors',
         body: formData
       })
-      .then(async (response) => {
-        let jsonRes = await response.json();
-        if (response.ok && jsonRes.success) {
-          formResult.style.color = '#198754';
-          formResult.textContent = '✓ 感謝您的來信！訊息已成功送出，我會盡快與您聯繫。';
-          contactForm.reset();
-        } else {
-          formResult.style.color = '#dc3545';
-          formResult.textContent = '傳送失敗：' + (jsonRes.message || '請檢查 Access Key 或稍後再試。');
-        }
+      .then(() => {
+        formResult.style.color = '#198754';
+        formResult.textContent = '✓ 感謝您的來信！訊息已成功送出，我會盡快與您聯繫。';
+        contactForm.reset();
       })
       .catch((error) => {
         formResult.style.color = '#dc3545';
-        formResult.textContent = '連線受阻（' + error.message + '），請確認無開啟廣告阻擋外掛。';
+        formResult.textContent = '傳送失敗，請稍後再試。';
       })
       .finally(() => {
         submitBtn.disabled = false;
@@ -863,6 +860,7 @@
     });
   }
 </script>
+
 
 </body>
 
