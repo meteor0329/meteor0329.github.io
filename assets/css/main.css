@@ -3612,3 +3612,17 @@ section .hero {
 .skills .soft-card .text-muted {
   color: #555555 !important;
 }
+
+/* 統一首頁 Skills、Portfolio 與 Contact 區塊總標題下方的副標文字為 18px，最大寬度 800px */
+#skills .section-title p,
+#portfolio .section-title p,
+#contact .section-title p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555555;
+  max-width: 800px;
+  width: 100%;
+  margin-inline: auto;
+  overflow-wrap: break-word;
+}
+
