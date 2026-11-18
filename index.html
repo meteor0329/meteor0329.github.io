@@ -711,8 +711,8 @@
                 <p>期待與您交流不同的設計想法，歡迎透過以下方式直接與我取得聯繫。</p>
               </div>
 
-              <!-- 串接 Web3Forms 穩定寄信至 meteor32975@gmail.com -->
-              <form action="https://web3forms.com" method="POST" class="contact-form">
+              <!-- 串接 Web3Forms（AJAX 背景送出，不跳轉頁面） -->
+              <form id="contact-form" class="contact-form">
                 <!-- 專屬 Access Key -->
                 <input type="hidden" name="access_key" value="4b83b657-07ce-4240-9fa1-cc61a70f86fc">
                 <!-- 自訂信件主旨與寄件者名稱 -->
@@ -756,13 +756,16 @@
                   </div>
 
                   <div class="col-12">
-                    <button type="submit" class="send-button">
+                    <button type="submit" id="submit-btn" class="send-button">
                       <span>SEND MESSAGE</span>
                       <i class="bi bi-arrow-right"></i>
                     </button>
+                    <!-- 送出狀態提示訊息 -->
+                    <div id="form-result" class="mt-3" style="font-size: 15px;"></div>
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
@@ -819,6 +822,54 @@
   <!-- Main JS File -->
 <script src="assets/js/projects-data.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const formResult = document.getElementById('form-result');
+  const submitBtn = document.getElementById('submit-btn');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      formResult.style.color = '#555555';
+      formResult.textContent = '訊息傳送中，請稍候...';
+
+      const formData = new FormData(contactForm);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch('https://web3forms.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let jsonRes = await response.json();
+        if (response.status === 200) {
+          formResult.style.color = '#198754';
+          formResult.textContent = '✓ 感謝您的來信！訊息已成功送出，我會盡快與您聯繫。';
+          contactForm.reset();
+        } else {
+          formResult.style.color = '#dc3545';
+          formResult.textContent = jsonRes.message || '傳送失敗，請稍後再試。';
+        }
+      })
+      .catch((error) => {
+        formResult.style.color = '#dc3545';
+        formResult.textContent = '網路連線異常，請稍後再試。';
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+      });
+    });
+  }
+</script>
+
+
 </body>
 
 </html>
