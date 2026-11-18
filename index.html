@@ -835,32 +835,27 @@
       formResult.style.color = '#555555';
       formResult.textContent = '訊息傳送中，請稍候...';
 
+      // 直接使用 FormData 傳送，避免跨網域 JSON 預檢被瀏覽器或外掛攔截
       const formData = new FormData(contactForm);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
 
       fetch('https://web3forms.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: json
+        body: formData
       })
       .then(async (response) => {
         let jsonRes = await response.json();
-        if (response.status === 200) {
+        if (response.ok && jsonRes.success) {
           formResult.style.color = '#198754';
           formResult.textContent = '✓ 感謝您的來信！訊息已成功送出，我會盡快與您聯繫。';
           contactForm.reset();
         } else {
           formResult.style.color = '#dc3545';
-          formResult.textContent = jsonRes.message || '傳送失敗，請稍後再試。';
+          formResult.textContent = '傳送失敗：' + (jsonRes.message || '請檢查 Access Key 或稍後再試。');
         }
       })
       .catch((error) => {
         formResult.style.color = '#dc3545';
-        formResult.textContent = '網路連線異常，請稍後再試。';
+        formResult.textContent = '連線受阻（' + error.message + '），請確認無開啟廣告阻擋外掛。';
       })
       .finally(() => {
         submitBtn.disabled = false;
@@ -868,7 +863,6 @@
     });
   }
 </script>
-
 
 </body>
 
