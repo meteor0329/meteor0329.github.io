@@ -15,7 +15,6 @@ const projects = [
   { id: "4-product", title: "紗士比亞-方巾不能書", url: "portfolio-4-product.html", categories: ["all", "product"] },
   { id: "5-branding", title: "iicake勇闖宇宙學院", url: "portfolio-5-branding.html", categories: ["all", "branding"] },
   { id: "6-graphic", title: "小丑魚總動員", url: "portfolio-6-graphic.html", categories: ["all", "graphic"] },
-  { id: "2-graphic", title: "聖誕巾喜送給你", url: "portfolio-2-graphic.html", categories: ["all", "graphic"] },
-  { id: "5-graphic", title: "放羊的蛋糕妹妹", url: "portfolio-5-graphic.html", categories: ["all", "graphic"] }
-  // 依此類推把所有專案填完...
+  { id: "8-graphic", title: "四葉幸運草 電商視覺設計", url: "portfolio-8-graphic.html", categories: ["all", "graphic"] },
+  { id: "9-graphic", title: "毛巾印花DIY 體驗視覺設計", url: "portfolio-9-graphic.html", categories: ["all", "graphic"] }
 ];
