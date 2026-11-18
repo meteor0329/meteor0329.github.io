@@ -3477,3 +3477,62 @@ section .hero {
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
+
+/* ==============================================================
+   詳情頁客製化樣式（集中於 portfolio-detail.css，不更動 main.css）
+============================================================== */
+
+/* 1. 統一詳情頁按鈕樣式，比照首頁「查看作品集」(.btn-ghost) */
+.portfolio-details .btn-ghost,
+.portfolio-detail-page .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  color: var(--default-color);
+  background-color: var(--surface-color);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio-details .btn-ghost:hover,
+.portfolio-details .btn-ghost:focus,
+.portfolio-detail-page .btn-ghost:hover,
+.portfolio-detail-page .btn-ghost:focus {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color), transparent 90%);
+  outline: none;
+}
+
+.portfolio-details .btn-ghost:active,
+.portfolio-detail-page .btn-ghost:active {
+  transform: translateY(1px);
+}
+
+/* 2. Design Process 4 張照片並排為一列 */
+.portfolio-details .process-gallery .gallery-masonry {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* 平板尺寸改為 2x2 排列 */
+@media (max-width: 991px) {
+  .portfolio-details .process-gallery .gallery-masonry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 手機尺寸改為 1 欄直向排列 */
+@media (max-width: 576px) {
+  .portfolio-details .process-gallery .gallery-masonry {
+    grid-template-columns: 1fr !important;
+  }
+}
