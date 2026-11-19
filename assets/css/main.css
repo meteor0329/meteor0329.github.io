@@ -3626,3 +3626,9 @@ section .hero {
   overflow-wrap: break-word;
 }
 
+.tool-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
