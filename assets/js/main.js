@@ -104,10 +104,12 @@
         duration: 600,
         easing: 'ease-in-out',
         once: true,
-        mirror: false
+        mirror: false,
+        offset: 20
       });
     }
   }
+
 
   window.addEventListener('load', aosInit);
 
@@ -352,5 +354,7 @@
       }
     }
   });
+  
+  
 
 })();
