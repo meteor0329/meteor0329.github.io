@@ -132,10 +132,45 @@
    * Initiate glightbox
    */
   if (typeof GLightbox !== 'undefined') {
-    const glightbox = GLightbox({
-      selector: '.glightbox'
+    let glightbox = null;
+
+    const updateLightboxGallery = (filterValue) => {
+      const allLinks = document.querySelectorAll('.portfolio-item .glightbox');
+
+      allLinks.forEach((link) => {
+        const item = link.closest('.portfolio-item');
+        if (!filterValue || filterValue === '*') {
+          // 預設或點選 All Projects 時，全部 18 張共用同一群組
+          link.setAttribute('data-gallery', 'gallery-all');
+        } else if (item && item.matches(filterValue)) {
+          // 點選單一分類時，只有該分類的作品共用群組
+          link.setAttribute('data-gallery', 'gallery-filtered');
+        } else {
+          // 隱藏的其他分類移除群組，避免切換時出現
+          link.removeAttribute('data-gallery');
+        }
+      });
+
+      if (glightbox) {
+        glightbox.destroy();
+      }
+      glightbox = GLightbox({
+        selector: '.glightbox'
+      });
+    };
+
+    // 1. 頁面剛載入時，先以 All Projects (*) 初始化全部 18 張
+    updateLightboxGallery('*');
+
+    // 2. 監聽分類篩選按鈕點擊，切換對應群組
+    document.querySelectorAll('.portfolio-filters li').forEach((filterBtn) => {
+      filterBtn.addEventListener('click', function () {
+        const filterValue = this.getAttribute('data-filter');
+        updateLightboxGallery(filterValue);
+      });
     });
   }
+
 
 
   /**
