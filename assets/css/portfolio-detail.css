@@ -756,3 +756,24 @@ h2 {
   align-self: flex-start;
   margin-left: 0;
 }
+
+
+/* 讓 Branding、Graphic Design、Product Design 詳情頁的雙欄標題與文案全部靠左對齊 */
+.portfolio-detail-page .overview-section,
+.portfolio-detail-page .detail-section,
+.portfolio-detail-page .two-column-section {
+  text-align: left;
+}
+
+.portfolio-detail-page .overview-section .eyebrow,
+.portfolio-detail-page .overview-section h2,
+.portfolio-detail-page .overview-copy p,
+.portfolio-detail-page .detail-section .eyebrow,
+.portfolio-detail-page .detail-section h2,
+.portfolio-detail-page .detail-copy p,
+.portfolio-detail-page .two-column-section .eyebrow,
+.portfolio-detail-page .two-column-section h2,
+.portfolio-detail-page .two-column-section p {
+  text-align: left;
+  margin-left: 0;
+}
