@@ -744,3 +744,15 @@ h2 {
   transform: translateY(1px);
 }
 
+/* 讓 Before & After 卡片內的按鈕靠左，與上方圖片左側切齊 */
+.portfolio-detail-page .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.portfolio-detail-page .card-body .btn-ghost {
+  align-self: flex-start;
+  margin-left: 0;
+}
