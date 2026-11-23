@@ -16,5 +16,5 @@ const projects = [
   { id: "5-branding", title: "iicake勇闖宇宙學院", url: "portfolio-5-branding.html", categories: ["all", "branding"] },
   { id: "6-graphic", title: "小丑魚總動員", url: "portfolio-6-graphic.html", categories: ["all", "graphic"] },
   { id: "8-graphic", title: "四葉幸運草 電商視覺設計", url: "portfolio-8-graphic.html", categories: ["all", "graphic"] },
-  { id: "2-graphic", title: "親愛的,我準備了聖誕巾喜給你", url: "portfolio-2-graphic.html", categories: ["all", "graphic"] }
+  { id: "5-product", title: "「巾豔深秋」── 銀杏6吋蛋糕毛巾", url: "portfolio-5-product.html", categories: ["all", "product"] }
 ];
